@@ -13,50 +13,71 @@ public class ListaArray implements EstruturaElementar{
 
     @Override
     public boolean buscaElemento(int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscaElemento'");
+        for (int i = 0; i < indice_fim; i++)
+        if (array[i] == valor)
+            return true;
+    return false;
     }
 
     @Override
     public int buscaIndice(int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscaIndice'");
+        if ((valor < 0) || (valor >= indice_fim)){
+            return -1;
+        }
+        return array[valor];
     }
+    
 
     @Override
     public int minimo() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'minimo'");
+        int minimo = array[0];
+        for (int i = 1; i < indice_fim; i++){
+            if (array[i] < minimo){
+                minimo = array[i];
+            }
+        }
+        return minimo;
     }
 
     @Override
     public int maximo() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'maximo'");
+        int maximo = array[0];
+        for (int i = 0; i < indice_fim; i++){
+            if (array[i] > maximo){
+                maximo = array[i];
+            }
+        }
+        return maximo;
     }
 
     @Override
     public int predecessor(int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'predecessor'");
+        for (int i = 0; i < indice_fim; i++){
+            if (array[i] == valor){
+                return array[i-1];
+            }
+        }
+        return -1;
     }
 
     @Override
     public int sucessor(int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sucessor'");
+       for (int i = 0; i < indice_fim; i++){
+            if (array[i] == valor){
+                return array[i+1];
+    }
+}
+return -1;
     }
 
     @Override
     public void insereElemento(int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insereElemento'");
+        array[indice_fim]=valor;
+        indice_fim++;
     }
 
     @Override
     public void insereElementoPosicao(int valor, int buscaIndice) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insereElementoPosicao'");
     }
 
     @Override
@@ -68,32 +89,40 @@ public class ListaArray implements EstruturaElementar{
 
     @Override
     public void insereFim(int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insereFim'");
+        array[indice_fim]=valor;
+        indice_fim++;
     }
 
     @Override
     public void remove(int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'remove'");
+        for (int i = 0; indice_fim < i; i++){
+            if (array[i]==valor){
+                removeIndice(i);
+            }
+        }
     }
 
     @Override
     public void removeIndice(int indice) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeIndice'");
+        for(int i = indice; i < indice_fim; i++){
+            array[i] = array[i++];
+            indice_fim--;
+        }
     }
 
     @Override
     public void removeInicio() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeInicio'");
+        for (int i = 0; i < indice_fim; i++) {
+            array[i] = array[i + 1];
+        }
     }
 
     @Override
     public void removeFim() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeFim'");
+        if (indice_fim > 0){
+            array[indice_fim - 1] = 0;
+            indice_fim--;
+        }
     }
     
 }
